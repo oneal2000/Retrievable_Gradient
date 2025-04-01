@@ -1,0 +1,4 @@
+elasticsearch-node1
+medicine-tasks
+__pycache__/
+*.pyc
