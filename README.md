@@ -20,10 +20,10 @@ Retrievable Gradient introduces a novel framework for continual pretraining by p
 
 This repository provides a step-by-step guide to evaluating **Retrievable Gradient** on various QA datasets. Follow these steps to reproduce our results:
 
-- **Store the Domain Corpus**: Select the appropriate storage granularity based on cost and efficiency.
-- **Run the Data Augmentation Module**: Use data augmentation to improve training effect and generate labels to reduce the retrieval noise.
-- **Generate Retrievable Gradient**: Train and store the gradients of different documents.
-- **Inference**: Retreive the gradient of relevant documents, apply them to the LLM, and use the updated LLM for inference.
+- **[Store the Domain Corpus](#Access Domain Corpus)**: Select the appropriate storage granularity based on cost and efficiency.
+- **Run the Data Augmentation Module(#Self-Augmentation)**: Use data augmentation to improve training effect and generate labels to reduce the retrieval noise.
+- **Generate Retrievable Gradient(#Gradient Generating)**: Train and store the gradients of different documents.
+- **Inference(#Inference)**: Retreive the gradient of relevant documents, apply them to the LLM, and use the updated LLM for inference.
 
 
 ### Install Environment
@@ -44,7 +44,6 @@ You can follow these steps to process it yourself or extract our `corpus.tar.gz`
 
 ```bash
 huggingface-cli download yanjx21/PubMed --repo-type dataset --local-dir corpus/rough 
-zstd -d corpus/rough/data.jsonl.zst -o corpus/rough/data.jsonl
 ```
 
 2. Use Elasticsearch to index the Wikipedia dump
@@ -153,7 +152,7 @@ gradient/
 |                           └── parameters
 ```
 
-### Generate
+### Inference
 
 To generate parameterized representations of documents (LoRA) for a given dataset, use the `src/inference.py` script with the following parameters:  
 
@@ -185,10 +184,14 @@ output/
 │                   └── result.txt
 ```
 
-### Quick Commands  
+### Experimental Results and corresponding Startup Scripts 
 
-You can quickly obtain our experimental results by executing the scripts in the `scripts` directory. For example:
+The following table presents the experimental results, where each number corresponds to a startup script. Clicking on the number allows you to view the corresponding script:
 
-```bash
-bash scripts/Llama3-8B-Instruct_base_chemprot.sh
-```
+#### PubMed
+
+| Model                   | Base | DAPT | RG |
+|-------------------------|------------|------------|----------|
+| llama3.2-1b-instruct   |  [17](scripts/Llama3.2-1b-instruct_base_chemprot.sh)    |  [14.4](scripts/Llama3.2-1b-instruct_dapt_chemprot.sh)    | **[17.8](scripts/Llama3.2-1b-instruct_rg_chemprot.sh)**    |
+| qwen2.5-1.5b-instruct  |  [32.4](scripts/Qwen2.5-1.5b-instruct_base_chemprot.sh)    |  **[36.2](scripts/Qwen2.5-1.5b-instruct_dapt_chemprot.sh)**    | [33](scripts/Qwen2.5-1.5b-instruct_rg_chemprot.sh)   |
+| llama3-8b-instruct     |  **[43](scripts/Llama3-8B-Instruct_base_chemprot.sh)**    |   [37.6](scripts/Llama3-8B-Instruct_dapt_chemprot.sh)   | [41.6](scripts/Llama3-8B-Instruct_rg_chemprot.sh)   |
