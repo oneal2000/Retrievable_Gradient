@@ -190,8 +190,8 @@ The following table presents the experimental results, where each number corresp
 
 #### PubMed
 
-| Model                   | Base | DAPT | RG |
-|-------------------------|------------|------------|----------|
-| llama3.2-1b-instruct   |  [17](scripts/Llama3.2-1b-instruct_base_chemprot.sh)    |  [14.4](scripts/Llama3.2-1b-instruct_dapt_chemprot.sh)    | **[17.8](scripts/Llama3.2-1b-instruct_rg_chemprot.sh)**    |
-| qwen2.5-1.5b-instruct  |  [32.4](scripts/Qwen2.5-1.5b-instruct_base_chemprot.sh)    |  **[36.2](scripts/Qwen2.5-1.5b-instruct_dapt_chemprot.sh)**    | [33](scripts/Qwen2.5-1.5b-instruct_rg_chemprot.sh)   |
-| llama3-8b-instruct     |  **[43](scripts/Llama3-8B-Instruct_base_chemprot.sh)**    |   [37.6](scripts/Llama3-8B-Instruct_dapt_chemprot.sh)   | [41.6](scripts/Llama3-8B-Instruct_rg_chemprot.sh)   |
+| Model                   | DAPT(Continual Pre-training sota) | RG(OUR) |
+|-------------------------|------------|----------|
+| llama3.2-1b-instruct   |[14.4](scripts/Llama3.2-1b-instruct_dapt_chemprot.sh)| **[17.8](scripts/Llama3.2-1b-instruct_rg_chemprot.sh)**    |
+| qwen2.5-1.5b-instruct   |  **[36.2](scripts/Qwen2.5-1.5b-instruct_dapt_chemprot.sh)**    | [33](scripts/Qwen2.5-1.5b-instruct_rg_chemprot.sh)   |
+| llama3-8b-instruct     |   [37.6](scripts/Llama3-8B-Instruct_dapt_chemprot.sh)   | **[41.6](scripts/Llama3-8B-Instruct_rg_chemprot.sh)**   |
