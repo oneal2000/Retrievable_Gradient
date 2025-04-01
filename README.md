@@ -20,9 +20,9 @@ Retrievable Gradient introduces a novel framework for continual pretraining by p
 
 This repository provides a step-by-step guide to evaluating **Retrievable Gradient** on various QA datasets. Follow these steps to reproduce our results:
 
-- **[Store the Domain Corpus](#Access_Domain_Corpus)**: Select the appropriate storage granularity based on cost and efficiency.
+- **[Store the Domain Corpus](#Access-Domain-Corpus)**: Select the appropriate storage granularity based on cost and efficiency.
 - **[Run the Data Augmentation Module](#Self-Augmentation)**: Use data augmentation to improve training effect and generate labels to reduce the retrieval noise.
-- **[Generate Retrievable Gradient](#Gradient_Generating)**: Train and store the gradients of different documents.
+- **[Generate Retrievable Gradient](#Gradient-Generating)**: Train and store the gradients of different documents.
 - **[Inference](#Inference)**: Retreive the gradient of relevant documents, apply them to the LLM, and use the updated LLM for inference.
 
 
@@ -33,7 +33,7 @@ conda create -n rg-env python=3.10.4
 conda activate rg-env
 pip install -r requirements.txt
 ```
-### Access Domain Corpus
+### Access-Domain-Corpus
 This section provides instructions on preparing and accessing the domain corpus for **Retrievable Gradient**. Depending on available resources, you can choose between fine-grained document-level processing or a more efficient clustered approach.
 
 #### **Scenario 1: Sufficient Resources** – Compute a Gradient for Each Document  
@@ -116,7 +116,7 @@ If you want to apply data augmentation to a new dataset, the default data format
 ]
 ```
 
-### Gradient Generating
+### Gradient-Generating
 
 To generate document-specific gradients (LoRA) for a given dataset, use the `src/encode.py` script with the following parameters:  
 | **Parameter**                  | **Description & Options**                                  |
